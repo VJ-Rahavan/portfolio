@@ -57,7 +57,7 @@ const About = () => {
             <ResumeLink
               href={resume}
               icon={downloadIcon}
-              download='Akash Vasaniya-Resume'
+              download='Vijayarahavan-Resume'
             >
               Download Resume
             </ResumeLink>
