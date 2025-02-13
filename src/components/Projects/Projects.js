@@ -1,9 +1,7 @@
 import React from 'react';
 import { StyledParagraph, StyledLink } from '../styles/Typography.styled';
-import { ProjectsContainer, StyledProjects } from '../styles/Projects.styled';
+import { StyledProjects } from '../styles/Projects.styled';
 import { SectionHeading, SectionTitle } from '../styles/SectionHeading';
-import { projectData } from './projectsData';
-import ProjectCardComponent from './ProjectCard';
 
 const Projects = () => {
   return (
