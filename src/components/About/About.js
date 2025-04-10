@@ -55,7 +55,10 @@ const About = () => {
           </StyledParagraph>
           <Resume>
             <ResumeLink
-              href={resume}
+              target='_blank'
+              href={
+                'https://drive.google.com/file/d/1-5_MM8k0422GT3TQP6bMaBxGP21MUAfQ/view?usp=sharing'
+              }
               icon={downloadIcon}
               download='Vijayarahavan-Resume'
             >
