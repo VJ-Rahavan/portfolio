@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowDown, Github, Mail, Globe, Terminal } from 'lucide-react';
 import { USER_INFO } from '../data';
@@ -11,61 +11,29 @@ interface HeroProps {
 export default function HeroSection({ onExploreClick, onTerminalClick }: HeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
 
   const { scrollY } = useScroll();
-  
+
   // Scrollytelling transforms: scale and fade content as we scroll down
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
   const heroScale = useTransform(scrollY, [0, 400], [1, 0.95]);
   const heroY = useTransform(scrollY, [0, 400], [0, -50]);
-  
-  // Interactive network particle background
+
+  // Static particle backdrop: regenerated on resize, otherwise stays put.
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animationFrameId: number;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
-
-    const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    };
-    window.addEventListener('resize', handleResize);
-
-    // Particles setup
-    const particleCount = Math.min(65, Math.floor((width * height) / 18000));
-    const particles: Array<{
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      radius: number;
-      color: string;
-    }> = [];
-
     const colors = ['rgba(255, 255, 255, 0.15)', 'rgba(255, 255, 255, 0.25)', 'rgba(255, 255, 255, 0.08)'];
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.6,
-        vy: (Math.random() - 0.5) * 0.6,
-        radius: Math.random() * 2 + 1,
-        color: colors[Math.floor(Math.random() * colors.length)]
-      });
-    }
+    let width = 0;
+    let height = 0;
+    let particles: Array<{ x: number; y: number; radius: number; color: string }> = [];
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw subtle radial gradient behind everything
       const radialGlow = ctx.createRadialGradient(
         width / 2, height / 2, 50,
         width / 2, height / 2, Math.max(width, height) * 0.8
@@ -75,26 +43,15 @@ export default function HeroSection({ onExploreClick, onTerminalClick }: HeroPro
       ctx.fillStyle = radialGlow;
       ctx.fillRect(0, 0, width, height);
 
-      // Draw connecting lines
       for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
-        
-        // Update positions
-        p1.x += p1.vx;
-        p1.y += p1.vy;
 
-        // Bounce off walls
-        if (p1.x < 0 || p1.x > width) p1.vx *= -1;
-        if (p1.y < 0 || p1.y > height) p1.vy *= -1;
-
-        // Draw particle
         ctx.beginPath();
         ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
         ctx.fillStyle = p1.color;
         ctx.globalAlpha = 0.5;
         ctx.fill();
 
-        // Connect particles close to each other
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
@@ -102,7 +59,6 @@ export default function HeroSection({ onExploreClick, onTerminalClick }: HeroPro
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            // Dynamic opacity based on distance
             const alpha = (1 - dist / 110) * 0.12;
             ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
             ctx.globalAlpha = alpha;
@@ -110,47 +66,40 @@ export default function HeroSection({ onExploreClick, onTerminalClick }: HeroPro
             ctx.stroke();
           }
         }
-
-        // Interaction with mouse
-        const mouseDist = Math.hypot(p1.x - mousePos.x, p1.y - mousePos.y);
-        if (mouseDist < 160) {
-          ctx.beginPath();
-          ctx.moveTo(p1.x, p1.y);
-          ctx.lineTo(mousePos.x, mousePos.y);
-          const alpha = (1 - mouseDist / 160) * 0.25;
-          ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
-          ctx.globalAlpha = alpha;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
       }
 
       ctx.globalAlpha = 1.0;
-      animationFrameId = requestAnimationFrame(draw);
     };
 
-    draw();
+    const setup = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+
+      const particleCount = Math.min(65, Math.floor((width * height) / 18000));
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 2 + 1,
+          color: colors[Math.floor(Math.random() * colors.length)],
+        });
+      }
+      draw();
+    };
+
+    setup();
+    window.addEventListener('resize', setup);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', setup);
     };
-  }, [mousePos]);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setMousePos({ x: e.clientX, y: e.clientY });
-  };
-
-  const handleMouseLeave = () => {
-    setMousePos({ x: -1000, y: -1000 });
-  };
+  }, []);
 
   return (
     <div
       id="hero-root"
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       className="relative w-full min-h-screen flex flex-col justify-between items-center overflow-hidden select-none"
     >
       {/* Background Interactive Network */}
