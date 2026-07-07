@@ -17,3 +17,11 @@ Then open http://localhost:3000/.
 npm run build
 npm run preview
 ```
+
+## Deploy to GitHub Pages
+
+```
+npm run deploy
+```
+
+Publishes the `dist/` build to the `gh-pages` branch. The site is served from https://vj-rahavan.github.io/portfolio.
