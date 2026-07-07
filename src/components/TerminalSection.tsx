@@ -239,7 +239,6 @@ export default function TerminalSection() {
               onKeyDown={handleKeyDown}
               className="flex-grow bg-transparent border-none outline-none font-mono text-xs sm:text-sm text-stone-200 caret-stone-300 focus:ring-0 p-0"
               placeholder="type help..."
-              autoFocus
               id="terminal-cli-input"
             />
           </div>
