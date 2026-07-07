@@ -19,7 +19,7 @@ export default function HeroSection({ onExploreClick, onTerminalClick }: HeroPro
   const heroScale = useTransform(scrollY, [0, 400], [1, 0.95]);
   const heroY = useTransform(scrollY, [0, 400], [0, -50]);
 
-  // Static particle backdrop: regenerated on resize, otherwise stays put.
+  // Particle backdrop: drifts on its own, ignores the cursor.
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -29,7 +29,8 @@ export default function HeroSection({ onExploreClick, onTerminalClick }: HeroPro
     const colors = ['rgba(255, 255, 255, 0.15)', 'rgba(255, 255, 255, 0.25)', 'rgba(255, 255, 255, 0.08)'];
     let width = 0;
     let height = 0;
-    let particles: Array<{ x: number; y: number; radius: number; color: string }> = [];
+    let animationFrameId = 0;
+    let particles: Array<{ x: number; y: number; vx: number; vy: number; radius: number; color: string }> = [];
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
@@ -45,6 +46,11 @@ export default function HeroSection({ onExploreClick, onTerminalClick }: HeroPro
 
       for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
+
+        p1.x += p1.vx;
+        p1.y += p1.vy;
+        if (p1.x < 0 || p1.x > width) p1.vx *= -1;
+        if (p1.y < 0 || p1.y > height) p1.vy *= -1;
 
         ctx.beginPath();
         ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
@@ -69,6 +75,7 @@ export default function HeroSection({ onExploreClick, onTerminalClick }: HeroPro
       }
 
       ctx.globalAlpha = 1.0;
+      animationFrameId = requestAnimationFrame(draw);
     };
 
     const setup = () => {
@@ -81,18 +88,21 @@ export default function HeroSection({ onExploreClick, onTerminalClick }: HeroPro
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
           radius: Math.random() * 2 + 1,
           color: colors[Math.floor(Math.random() * colors.length)],
         });
       }
-      draw();
     };
 
     setup();
+    draw();
     window.addEventListener('resize', setup);
 
     return () => {
       window.removeEventListener('resize', setup);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
