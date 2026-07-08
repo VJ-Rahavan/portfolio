@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { ArrowDown, Github, Mail, Globe, Terminal } from 'lucide-react';
+import { Github, Mail, Globe, Terminal } from 'lucide-react';
 import { USER_INFO } from '../data';
 
 interface HeroProps {
@@ -220,30 +220,6 @@ export default function HeroSection({ onExploreClick, onTerminalClick }: HeroPro
           {USER_INFO.tagline}
         </motion.p>
 
-        {/* Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-5"
-        >
-          <button
-            onClick={onExploreClick}
-            className="px-8 py-3 bg-stone-100 text-stone-900 text-xs font-bold uppercase tracking-widest hover:bg-stone-200 transition-colors cursor-pointer flex items-center justify-center space-x-2 shadow-md"
-            id="hero-explore-btn"
-          >
-            <span>Begin Narrative</span>
-            <ArrowDown size={13} className="animate-bounce" />
-          </button>
-          <button
-            onClick={onTerminalClick}
-            className="px-8 py-3 bg-transparent border border-white/15 hover:border-white/30 text-stone-200 text-xs uppercase tracking-widest font-semibold transition-colors cursor-pointer flex items-center justify-center space-x-2"
-            id="hero-interactive-terminal-btn"
-          >
-            <Terminal size={13} />
-            <span>Interactive Console</span>
-          </button>
-        </motion.div>
       </motion.main>
 
       {/* Sticky Bottom Scroll Prompter */}
