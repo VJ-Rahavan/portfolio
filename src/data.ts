@@ -80,16 +80,18 @@ export const TIMELINE: TimelineItem[] = [
     year: "2025 - Present",
     title: "Technology Engineer",
     organization: "Purplescape",
-    description: "Building high-performance web systems and interactive product experiences for enterprise and consumer clients.",
-    type: "work"
+    description: "Building high-performance React and React Native applications, interactive product experiences, and web systems for enterprise and consumer clients.",
+    type: "work",
+    technologies: ["React", "React Native", "TypeScript", "Node.js"]
   },
   {
     id: "t2",
     year: "2022 - 2025",
     title: "Technology Engineer",
     organization: "PurpleSlate",
-    description: "Shipped production web applications with a focus on frontend architecture, performance, and developer experience.",
-    type: "work"
+    description: "Shipped production React and React Native applications with a focus on frontend architecture, performance, and developer experience.",
+    type: "work",
+    technologies: ["React", "React Native", "TypeScript"]
   },
   {
     id: "t3",
