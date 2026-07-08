@@ -43,7 +43,7 @@ export default function ContactSection() {
             Initiate Contact
           </h2>
           <p className="text-stone-400 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed font-sans">
-            Interested in starting a project or talking about software architecture? Send a direct dispatch below.
+            Want to talk about software architecture, engineering craft, or just say hi? Send a direct dispatch below.
           </p>
         </div>
 

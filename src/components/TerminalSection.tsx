@@ -57,7 +57,7 @@ export default function TerminalSection() {
           { text: `Audit Name: ${USER_INFO.name} (${USER_INFO.nickname})`, type: 'success' },
           { text: `Title:      ${USER_INFO.title}`, type: 'output' },
           { text: `Bio:        ${USER_INFO.bio}`, type: 'output' },
-          { text: `Status:     Online - Seeking technical collaborations and engineering leadership.`, type: 'accent' }
+          { text: `Status:     Online - Currently building at Purplescape. Always up for a good technical conversation.`, type: 'accent' }
         );
         break;
 
@@ -239,7 +239,6 @@ export default function TerminalSection() {
               onKeyDown={handleKeyDown}
               className="flex-grow bg-transparent border-none outline-none font-mono text-xs sm:text-sm text-stone-200 caret-stone-300 focus:ring-0 p-0"
               placeholder="type help..."
-              autoFocus
               id="terminal-cli-input"
             />
           </div>

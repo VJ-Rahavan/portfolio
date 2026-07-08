@@ -77,37 +77,36 @@ export const PROJECTS: Project[] = [
 export const TIMELINE: TimelineItem[] = [
   {
     id: "t1",
-    year: "2024 - Present",
-    title: "Senior Full-Stack Developer",
-    organization: "TechForge Solutions",
-    description: "Spearheading development of complex single-page architectures, interactive real-time modules, and high-performance data processing tools. Restructured state management to improve frame rates and system responsiveness.",
+    year: "2025 - Present",
+    title: "Technology Engineer",
+    organization: "Purplescape",
+    description: "Building high-performance React and React Native applications, interactive product experiences, and web systems for enterprise and consumer clients.",
     type: "work",
-    technologies: ["React", "TypeScript", "Node.js", "AWS", "Socket.io"]
+    technologies: ["React", "React Native", "TypeScript", "Node.js"]
   },
   {
     id: "t2",
-    year: "2022 - 2024",
-    title: "Software Engineer",
-    organization: "Apex Digital Systems",
-    description: "Built scalable cloud-native microservices and responsive frontends. Collaborated on migrating legacy dashboards to high-speed Vite environments, decreasing build-times by 70% and asset delivery latency by 35%.",
+    year: "2022 - 2025",
+    title: "Technology Engineer",
+    organization: "PurpleSlate",
+    description: "Shipped production React and React Native applications with a focus on frontend architecture, performance, and developer experience.",
     type: "work",
-    technologies: ["React", "Redux", "Express", "PostgreSQL", "Docker"]
+    technologies: ["React", "React Native", "TypeScript"]
   },
   {
     id: "t3",
-    year: "2019 - 2022",
-    title: "Web Technologist & Freelancer",
-    organization: "Independent Consultant",
-    description: "Created custom interactive sites, secure content management panels, and responsive portals for local and international brands. Fine-tuned layout layouts, animation curves, and SEO search visibility.",
-    type: "work",
-    technologies: ["JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Firebase"]
+    year: "2023 - 2025",
+    title: "Master of Computer Applications (MCA)",
+    organization: "SRM University",
+    description: "Advanced coursework in distributed systems, software design, database internals, and modern application architecture.",
+    type: "academic"
   },
   {
     id: "t4",
-    year: "2015 - 2019",
-    title: "B.Sc. in Computer Science & Engineering",
-    organization: "University of Technology",
-    description: "Graduated with honors. Developed strong fundamentals in data structures, design patterns, algorithm optimization, human-computer interfaces, and database synchronization systems.",
+    year: "2019 - 2022",
+    title: "B.Sc. in Computer Science",
+    organization: "VHNSNC",
+    description: "Foundations in data structures, algorithms, operating systems, databases, and software engineering.",
     type: "academic"
   }
 ];
