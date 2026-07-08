@@ -96,8 +96,8 @@ export const TIMELINE: TimelineItem[] = [
   {
     id: "t3",
     year: "2019 - 2022",
-    title: "Web Technologist & Freelancer",
-    organization: "Independent Consultant",
+    title: "Technology Engineer",
+    organization: "PurpleScape",
     description: "Created custom interactive sites, secure content management panels, and responsive portals for local and international brands. Fine-tuned layout layouts, animation curves, and SEO search visibility.",
     type: "work",
     technologies: ["JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Firebase"]

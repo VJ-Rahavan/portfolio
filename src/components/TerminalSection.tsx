@@ -57,7 +57,7 @@ export default function TerminalSection() {
           { text: `Audit Name: ${USER_INFO.name} (${USER_INFO.nickname})`, type: 'success' },
           { text: `Title:      ${USER_INFO.title}`, type: 'output' },
           { text: `Bio:        ${USER_INFO.bio}`, type: 'output' },
-          { text: `Status:     Online - Seeking technical collaborations and engineering leadership.`, type: 'accent' }
+          { text: `Status:     Online - Currently building at PurpleScape. Always up for a good technical conversation.`, type: 'accent' }
         );
         break;
 
