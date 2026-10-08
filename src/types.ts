@@ -24,7 +24,7 @@ export interface TimelineItem {
 export interface Skill {
   name: string;
   level: number; // 0-100
-  category: 'frontend' | 'backend' | 'tools';
+  category: 'frontend' | 'backend' | 'tools' | 'ai';
   color: string;
 }
 
