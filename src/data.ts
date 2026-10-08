@@ -13,64 +13,35 @@ export const USER_INFO = {
 
 export const PROJECTS: Project[] = [
   {
-    id: "devsync",
-    title: "DevSync Hub",
-    subtitle: "Real-time Collaborative Workspace",
-    description: "A secure workspace combining code editing, whiteboard sharing, and WebRTC audio chat for developers.",
-    longDescription: "DevSync is a full-featured collaborative workspace designed for remote developer pairs. By integrating custom CRDT algorithms with standard WebSockets, it provides conflict-free rich text editing, shared sketch canvases, and instant latency-minimized audio calling directly in the browser.",
-    technologies: ["React", "TypeScript", "Node.js", "WebRTC", "Socket.io", "Tailwind CSS"],
-    githubUrl: "https://github.com/vj-rahavan/portfolio",
+    id: "pdf-text-extractor",
+    title: "PDF Text Extractor",
+    subtitle: "React Native Library · npm",
+    description: "A fully offline, on-device PDF text extraction library for React Native, built on iOS PDFKit and Android PdfBox.",
+    longDescription: "react-native-pdf-text-extractor pulls embedded text out of PDFs entirely on-device: no network calls, no cloud OCR. It uses each platform's native PDF stack (PDFKit on iOS, PdfBox-Android on Android) and exposes a small promise-based API for page counts, whole-document text, and per-page text, with optional normalization that cleans up hyphenated line-wraps and invisible characters.",
+    technologies: ["React Native", "TypeScript", "Swift", "Kotlin", "PDFKit", "PdfBox-Android"],
+    githubUrl: "https://github.com/VJ-Rahavan/react-native-pdf-text-extractor",
+    demoUrl: "https://www.npmjs.com/package/react-native-pdf-text-extractor",
     stats: [
-      { label: "Sync Latency", value: "<12ms" },
-      { label: "Active Nodes", value: "10k+" },
-      { label: "Stars", value: "412" }
+      { label: "Network Calls", value: "Zero" },
+      { label: "Platforms", value: "iOS & Android" },
+      { label: "License", value: "MIT" }
     ],
-    accentColor: "from-cyan-400 to-blue-600"
+    accentColor: "from-rose-400 to-red-600"
   },
   {
-    id: "aurasynth",
-    title: "Aura Synth",
-    subtitle: "Creative Web Audio Engine",
-    description: "An interactive, visual synthesizer utilizing Web Audio and Canvas APIs to create organic audio soundscapes.",
-    longDescription: "Aura Synth explores the boundaries of human-computer music creation. It enables users to place interactive frequency emitters on a canvas, generating sound nodes that interact visually. Features custom waveform shaping, low-frequency oscillators, and high-performance visual rendering.",
-    technologies: ["React", "TypeScript", "Web Audio API", "Canvas 2D", "Framer Motion"],
-    githubUrl: "https://github.com/vj-rahavan/portfolio",
+    id: "generative-ui",
+    title: "FitTrack Generative UI",
+    subtitle: "AI Coach that Answers with UI",
+    description: "An AI fitness coach that responds with interactive dashboards, charts, and forms instead of text, streamed live from the model.",
+    longDescription: "FitTrack composes its answers as UI. The LLM fetches real training data through tools, then writes components from a fixed, Pydantic-validated catalog that stream to the browser over SSE as each one is generated. Button clicks and form submits go back to the agent, which acts on them and renders the result. The model never writes HTML or JavaScript, so every component is validated before it reaches the page.",
+    technologies: ["React", "TypeScript", "FastAPI", "LangChain", "Groq", "Pydantic", "Recharts"],
+    githubUrl: "https://github.com/VJ-Rahavan/Generative-UI",
     stats: [
-      { label: "FPS Render", value: "60fps" },
-      { label: "Audio Channels", value: "16 Node" },
-      { label: "Synthesizers", value: "Analog & FM" }
-    ],
-    accentColor: "from-violet-500 to-fuchsia-600"
-  },
-  {
-    id: "gridcraft",
-    title: "Gridcraft Canvas",
-    subtitle: "Bento-style Workspace Builder",
-    description: "A drag-and-drop workspace builder featuring custom widget integrations and fully responsive, saveable dashboard layouts.",
-    longDescription: "Gridcraft redefines dashboard organization. Users can custom-build their work view by creating, resizing, and snapping widgets—from task lists to live stock and weather grids. Includes auto-saving capabilities, custom JSON export options, and a suite of built-in tool integrations.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "LocalForage", "HTML5 Drag-Drop"],
-    githubUrl: "https://github.com/vj-rahavan/portfolio",
-    stats: [
-      { label: "Arrangement Accuracy", value: "Sub-pixel" },
-      { label: "Local Storage Space", value: "Durable" },
-      { label: "Widgets Available", value: "14+" }
+      { label: "Output", value: "Live UI, not text" },
+      { label: "Rendering", value: "Streams per component" },
+      { label: "Safety", value: "Schema-validated" }
     ],
     accentColor: "from-emerald-400 to-teal-600"
-  },
-  {
-    id: "helix",
-    title: "Helix LLM Agent",
-    subtitle: "Autonomous Code Auditor",
-    description: "An intelligent automated assistant that reviews commits and scans repositories for vulnerabilities in real time.",
-    longDescription: "Helix integrates seamlessly as a GitHub Action or local CLI to inspect pull requests before production deployment. Powered by deep LLM parsing, it reports code duplication, suggests algorithmic optimizations, and automatically highlights security risks like exposed API keys.",
-    technologies: ["Node.js", "TypeScript", "Gemini API", "Esbuild", "GitHub Actions"],
-    githubUrl: "https://github.com/vj-rahavan/portfolio",
-    stats: [
-      { label: "Audit Accuracy", value: "98.2%" },
-      { label: "Scan Speed", value: "0.8s/file" },
-      { label: "Languages Supported", value: "12+" }
-    ],
-    accentColor: "from-amber-400 to-orange-600"
   }
 ];
 
@@ -113,23 +84,32 @@ export const TIMELINE: TimelineItem[] = [
 
 export const SKILLS: Skill[] = [
   // Frontend
-  { name: "React / Next.js", level: 95, category: "frontend", color: "#38BDF8" },
+  { name: "React", level: 95, category: "frontend", color: "#38BDF8" },
+  { name: "React Native", level: 92, category: "frontend", color: "#61DAFB" },
+  { name: "Expo", level: 88, category: "frontend", color: "#E5E7EB" },
   { name: "TypeScript", level: 90, category: "frontend", color: "#3178C6" },
   { name: "Tailwind CSS", level: 98, category: "frontend", color: "#38BDF8" },
-  { name: "Framer Motion", level: 88, category: "frontend", color: "#F43F5E" },
-  { name: "HTML5 & CSS3 Canvas", level: 92, category: "frontend", color: "#E34F26" },
+  { name: "Zustand & Redux", level: 88, category: "frontend", color: "#764ABC" },
+  { name: "ECharts", level: 85, category: "frontend", color: "#E43961" },
 
   // Backend
   { name: "Node.js & Express", level: 88, category: "backend", color: "#22C55E" },
   { name: "GraphQL & REST APIs", level: 85, category: "backend", color: "#E10098" },
-  { name: "PostgreSQL & Prisma", level: 82, category: "backend", color: "#336791" },
-  { name: "MongoDB & Mongoose", level: 80, category: "backend", color: "#47A248" },
-  { name: "Firebase (Auth / Firestore)", level: 85, category: "backend", color: "#FFCA28" },
+  { name: "PostgreSQL", level: 82, category: "backend", color: "#336791" },
+  { name: "Python & FastAPI", level: 82, category: "backend", color: "#3776AB" },
+  { name: "Firebase (FCM / Crashlytics)", level: 85, category: "backend", color: "#FFCA28" },
 
   // Tools
   { name: "Git & GitHub Workflows", level: 92, category: "tools", color: "#F05032" },
   { name: "Docker & Containers", level: 78, category: "tools", color: "#2496ED" },
   { name: "Vite & Esbuild Bundling", level: 88, category: "tools", color: "#646CFF" },
   { name: "AWS & Google Cloud Run", level: 80, category: "tools", color: "#FF9900" },
-  { name: "CI/CD & GitHub Actions", level: 82, category: "tools", color: "#2088FF" }
+  { name: "CI/CD & GitHub Actions", level: 82, category: "tools", color: "#2088FF" },
+
+  // Generative AI
+  { name: "LLM Agents & Tool Calling", level: 85, category: "ai", color: "#A78BFA" },
+  { name: "Generative UI", level: 88, category: "ai", color: "#F472B6" },
+  { name: "LangChain", level: 82, category: "ai", color: "#2DD4BF" },
+  { name: "RAG (Retrieval-Augmented Generation)", level: 84, category: "ai", color: "#34D399" },
+  { name: "Prompt Engineering", level: 86, category: "ai", color: "#FACC15" }
 ];

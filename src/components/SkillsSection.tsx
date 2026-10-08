@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Award, Code2, Database, Cpu, Layers, Zap, CheckCircle2, Sparkles } from 'lucide-react';
+import { Award, Code2, Database, Cpu, Layers, Zap, CheckCircle2, Sparkles, BrainCircuit } from 'lucide-react';
 import { SKILLS } from '../data';
 import { Skill } from '../types';
 
@@ -15,6 +15,8 @@ export default function SkillsSection() {
         return <Database size={13} />;
       case 'tools':
         return <Cpu size={13} />;
+      case 'ai':
+        return <BrainCircuit size={13} />;
       default:
         return <Layers size={13} />;
     }
@@ -22,10 +24,20 @@ export default function SkillsSection() {
 
   const getSelfAssessment = (skillName: string) => {
     const assessments: Record<string, { desc: string; usage: string; methodologies: string[] }> = {
-      "React / Next.js": {
+      "React": {
         desc: "Building complex single-page architectures, responsive hook-based lifecycles, real-time sync states, and dynamic dashboards with optimized frame rates.",
         usage: "Engineered the high-performance collaborative workspace, interactive charts, and live terminal shell in this portfolio.",
         methodologies: ["Custom Hook Orchestration", "Dynamic Rendering Loops", "State Management Engines"]
+      },
+      "React Native": {
+        desc: "Building cross-platform iOS and Android apps with shared TypeScript code, smooth native-feeling interactions, and custom native modules when JavaScript alone isn't enough.",
+        usage: "Shipped production React Native apps at PurpleSlate and Purplescape, and published react-native-pdf-text-extractor, a native module built on PDFKit and PdfBox.",
+        methodologies: ["Cross-Platform Architecture", "Native Module Bridging", "Mobile Performance Tuning"]
+      },
+      "Expo": {
+        desc: "Speeding up React Native development with Expo's tooling: managed workflows, config plugins for native setup, EAS cloud builds, and over-the-air updates.",
+        usage: "Used to build, ship, and update React Native apps without waiting on full app store releases for every fix.",
+        methodologies: ["EAS Builds & Submit", "Over-the-Air Updates", "Config Plugins"]
       },
       "TypeScript": {
         desc: "Writing strict static type compiling routines, robust generic utility schemas, contract-first API payloads, and clean interface systems.",
@@ -37,15 +49,15 @@ export default function SkillsSection() {
         usage: "Applied to form the modern, eye-safe slate and stone color palettes and typography scales throughout this app.",
         methodologies: ["Fluid Design Tokens", "Dynamic Breakpoints", "Zero Runtime CSS Overhead"]
       },
-      "Framer Motion": {
-        desc: "Orchestrating smooth entrance transitions, staggered grid load cycles, spring-physics-based scrolling tracks, and exit animations.",
-        usage: "Created the immersive scroll-reveal transitions, bento animations, and interactive tab switches in the project log.",
-        methodologies: ["Spring-Curve Physics", "Exit Animators", "Staggered Mount Layouts"]
+      "Zustand & Redux": {
+        desc: "Managing app state with the right tool for the job: small hook-based Zustand stores for lightweight global state, and Redux Toolkit slices with middleware for large, shared state.",
+        usage: "Used across React and React Native apps to keep state predictable, avoid needless re-renders, and keep complex flows easy to debug.",
+        methodologies: ["Zustand Hook Stores", "Redux Toolkit Slices", "Selector Subscriptions"]
       },
-      "HTML5 & CSS3 Canvas": {
-        desc: "Implementing double-buffered matrix rendering cycles, custom physics particles, and real-time canvas drawing APIs.",
-        usage: "Engineered the interactive high-performance background particle mesh on the main hero landing.",
-        methodologies: ["Matrix Painting Loops", "Double-Buffered Frames", "Vector Physics Particle Paths"]
+      "ECharts": {
+        desc: "Building interactive data visualizations with Apache ECharts: line, bar, pie, and custom charts with tooltips, zooming, and responsive, theme-aware styling.",
+        usage: "Used to turn dense datasets into clear, interactive dashboards and analytics views.",
+        methodologies: ["Interactive Dashboards", "Custom Chart Options", "Large Dataset Rendering"]
       },
       "Node.js & Express": {
         desc: "Deploying high-throughput REST APIs, custom middleware route controllers, event-driven processes, and server proxies.",
@@ -57,20 +69,20 @@ export default function SkillsSection() {
         usage: "Powering asynchronous external calls and third-party data synchronization pipelines.",
         methodologies: ["Unified Gateways", "Rate-Limiting Protocols", "Payload Minimization"]
       },
-      "PostgreSQL & Prisma": {
-        desc: "Defining complex relational schemas, transaction isolations, indexing speeds, and automated Prisma migrations.",
+      "PostgreSQL": {
+        desc: "Defining complex relational schemas, transaction isolations, indexing speeds, and schema migrations.",
         usage: "Engineered robust structured analytical storages and durable database systems.",
-        methodologies: ["Relational Schemes", "Database Index Tuning", "Prisma ORM Migrations"]
+        methodologies: ["Relational Schemes", "Database Index Tuning", "Schema Migrations"]
       },
-      "MongoDB & Mongoose": {
-        desc: "Creating flexible NoSQL collections, advanced aggregation pipeline parameters, and nesting document trees.",
-        usage: "Powering analytical statistics tracking, user state storage, and dynamic metadata layers.",
-        methodologies: ["Flexible Schema Designs", "Aggregation Pipelines", "Dynamic Index Tuning"]
+      "Python & FastAPI": {
+        desc: "Building async Python APIs with FastAPI, Pydantic models for typed request and response contracts, and SQLAlchemy for async database access.",
+        usage: "Wrote the FitTrack backend: the agent loop, tool registry, streaming chat endpoint, and seeded training database.",
+        methodologies: ["Async FastAPI Services", "Pydantic Data Models", "Async SQLAlchemy"]
       },
-      "Firebase (Auth / Firestore)": {
-        desc: "Configuring federated sign-in methods, secure access rules, real-time document listener hooks, and offline state caching.",
-        usage: "Implemented user-authored history systems, live cloud updates, and social authorization keys.",
-        methodologies: ["Real-Time Document Sync", "Granular Access Control Rules", "Federated OAuth Integration"]
+      "Firebase (FCM / Crashlytics)": {
+        desc: "Delivering push notifications through Firebase Cloud Messaging (FCM), including topic and targeted messaging, and tracking app stability with Crashlytics crash reporting.",
+        usage: "Implemented FCM push notifications and Crashlytics crash monitoring for production apps.",
+        methodologies: ["FCM Push Notifications", "Topic & Targeted Messaging", "Crashlytics Crash Monitoring"]
       },
       "Git & GitHub Workflows": {
         desc: "Conducting atomic feature branching, pull-request auditing, SemVer version tagging, and conflict resolutions.",
@@ -96,6 +108,31 @@ export default function SkillsSection() {
         desc: "Constructing automated pipeline templates, static style validators, compile testing, and deployment webhooks.",
         usage: "Maintains high quality gates on every pushed master-branch merge request.",
         methodologies: ["Automated Linters & Tests", "Staging Quality Gates", "Auto-Deploy Triggers"]
+      },
+      "LLM Agents & Tool Calling": {
+        desc: "Building agent loops where the model calls typed data tools, reads the results, and decides its next step, with retries and graceful error handling.",
+        usage: "Powers the FitTrack coach, which reads and writes workouts, metrics, and plans through 11 agent tools before composing its answer.",
+        methodologies: ["Agent Loops", "Typed Tool Schemas", "Error Recovery & Retries"]
+      },
+      "Generative UI": {
+        desc: "Letting the model answer with interactive components (metrics, charts, tables, forms) instead of plain text, rendered from a fixed, safe component catalog.",
+        usage: "Built FitTrack, where every answer is a live dashboard and button clicks or form submits flow back to the agent as events.",
+        methodologies: ["Component Catalogs", "Model-Driven Layouts", "UI Event Round-Trips"]
+      },
+      "LangChain": {
+        desc: "Wiring chat models, structured tools, and streaming into provider-agnostic pipelines that can switch LLM backends without touching the agent logic.",
+        usage: "Runs the FitTrack agent on Groq through ChatGroq and StructuredTool, with any ready-made LangChain tool plugging straight in.",
+        methodologies: ["Provider-Agnostic Models", "StructuredTool Registries", "Runnable Config Context"]
+      },
+      "RAG (Retrieval-Augmented Generation)": {
+        desc: "Grounding model answers in your own data by chunking and embedding documents, retrieving the most relevant passages, and feeding them into the prompt as context.",
+        usage: "Used to build assistants that answer from private documents and knowledge bases with fewer hallucinations than the model alone.",
+        methodologies: ["Chunking & Embeddings", "Vector Search", "Context-Grounded Prompts"]
+      },
+      "Prompt Engineering": {
+        desc: "Designing system prompts, personas, and output formats that keep models reliable, and compacting conversation history to save tokens.",
+        usage: "Shapes the FitTrack coach persona and the streaming UI format the model follows, generated directly from the component catalog.",
+        methodologies: ["System Prompt Design", "Output Format Contracts", "History Compaction"]
       }
     };
     return assessments[skillName] || {
@@ -108,7 +145,8 @@ export default function SkillsSection() {
   const categories = [
     { id: 'frontend', name: 'Frontend Architecture' },
     { id: 'backend', name: 'Backend & Database' },
-    { id: 'tools', name: 'Operations & Tooling' }
+    { id: 'tools', name: 'Operations & Tooling' },
+    { id: 'ai', name: 'Generative AI & Agents' }
   ];
 
   return (

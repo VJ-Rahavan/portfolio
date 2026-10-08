@@ -12,9 +12,13 @@ export default function ProjectsSection() {
   });
 
   // Calculate horizontal translation for the project track
-  // 4 items, we translate from 0% to -75% (so 3 cards slide away, leaving the last one)
-  const xTranslation = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "-75%"]);
+  // Slide all but the last card away, leaving the last one in view
+  const trackEnd = `-${((PROJECTS.length - 1) / PROJECTS.length) * 100}%`;
+  const xTranslation = useTransform(scrollYProgress, [0.1, 0.9], ["0%", trackEnd]);
   
+  // Live percentage label for the progress indicator
+  const progressPercent = useTransform(scrollYProgress, v => `${Math.min(100, Math.round(v * 100))}%`);
+
   // Apply spring physics for buttery-smooth scrolling inertia
   const xSpring = useSpring(xTranslation, {
     stiffness: 70,
@@ -26,7 +30,7 @@ export default function ProjectsSection() {
     <div
       ref={containerRef}
       id="projects-section"
-      className="relative w-full h-auto md:h-[400vh] bg-[#0a0a0a]"
+      className="relative w-full h-auto md:h-[200vh] bg-[#0a0a0a]"
     >
       {/* Desktop Sticky Container */}
       <div className="hidden md:block sticky top-0 h-screen w-full overflow-hidden border-t border-white/5">
@@ -153,7 +157,7 @@ export default function ProjectsSection() {
                             <span>Repository</span>
                           </a>
                           <a
-                            href={project.githubUrl}
+                            href={project.demoUrl ?? project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="p-2 px-3 rounded bg-stone-100 hover:bg-stone-200 text-stone-900 transition-all duration-300 flex items-center justify-center cursor-pointer"
@@ -180,7 +184,7 @@ export default function ProjectsSection() {
               />
             </div>
             <span className="font-mono text-[10px] text-stone-500 ml-4">
-              Story progress: {Math.min(100, Math.round(scrollYProgress.get() * 100))}%
+              Story progress: <motion.span>{progressPercent}</motion.span>
             </span>
           </div>
 
@@ -263,7 +267,7 @@ export default function ProjectsSection() {
                     <span>Repo</span>
                   </a>
                   <a
-                    href={project.githubUrl}
+                    href={project.demoUrl ?? project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-grow flex items-center justify-center space-x-1.5 py-2 px-3 rounded bg-stone-100 hover:bg-stone-200 text-stone-900 font-mono text-[10px] uppercase tracking-widest font-semibold"
