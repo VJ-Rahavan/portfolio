@@ -8,6 +8,7 @@ export const USER_INFO = {
   bio: "A passionate Software Engineer who crafts modular web applications, fluid interactive interfaces, and robust distributed backends. Specializing in React, TypeScript, Node.js, and Cloud Infrastructure, I bridge the gap between engineering rigor and beautiful user interfaces.",
   email: "vijayarahavan176@gmail.com",
   github: "https://github.com/vj-rahavan",
+  linkedin: "https://www.linkedin.com/in/vijayarahavan-k-065777224",
   website: "https://vj-rahavan.github.io/portfolio/"
 };
 

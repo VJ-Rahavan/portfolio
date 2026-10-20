@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { Github, Mail, Globe, Terminal } from 'lucide-react';
+import { Github, Linkedin, Mail, Globe, Terminal } from 'lucide-react';
 import { USER_INFO } from '../data';
 
 interface HeroProps {
@@ -149,6 +149,15 @@ export default function HeroSection({ onExploreClick, onTerminalClick }: HeroPro
             id="nav-github-link"
           >
             <Github size={18} />
+          </a>
+          <a
+            href={USER_INFO.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-stone-400 hover:text-stone-100 transition-all duration-300 transform hover:scale-110"
+            id="nav-linkedin-link"
+          >
+            <Linkedin size={18} />
           </a>
           <a
             href={`mailto:${USER_INFO.email}`}
