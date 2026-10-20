@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Mail, Send, Github, CheckCircle2, MapPin, Globe, Sparkles } from 'lucide-react';
+import { Mail, Send, Github, Linkedin, CheckCircle2, MapPin, Globe, Sparkles } from 'lucide-react';
 import { USER_INFO } from '../data';
 
 export default function ContactSection() {
@@ -95,6 +95,26 @@ export default function ContactSection() {
                       className="text-stone-300 hover:text-stone-100 font-sans text-sm sm:text-base transition-colors duration-200"
                     >
                       github.com/vj-rahavan
+                    </a>
+                  </div>
+                </div>
+
+                {/* LinkedIn card */}
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 rounded bg-stone-900 border border-white/10 text-stone-300 mt-1">
+                    <Linkedin size={16} />
+                  </div>
+                  <div>
+                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-stone-500 block mb-0.5">
+                      Professional Network
+                    </span>
+                    <a
+                      href={USER_INFO.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-stone-300 hover:text-stone-100 font-sans text-sm sm:text-base transition-colors duration-200 break-all"
+                    >
+                      linkedin.com/in/vijayarahavan-k
                     </a>
                   </div>
                 </div>

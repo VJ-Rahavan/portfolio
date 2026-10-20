@@ -95,6 +95,7 @@ export default function TerminalSection() {
           { text: "Deploying secure connection tunnels...", type: 'success' },
           { text: `  Email:      ${USER_INFO.email}`, type: 'output' },
           { text: `  GitHub:     ${USER_INFO.github}`, type: 'output' },
+          { text: `  LinkedIn:   ${USER_INFO.linkedin}`, type: 'output' },
           { text: `  Portfolio:  ${USER_INFO.website}`, type: 'output' },
           { text: "Type 'mail' to send an email immediately.", type: 'accent' }
         );
